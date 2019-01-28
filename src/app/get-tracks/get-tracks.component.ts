@@ -9,20 +9,15 @@ import { TrackService } from '../track.service';
 })
 export class GetTracksComponent implements OnInit {
 
-  tracks: Track[];
+  private results = [];
 
   constructor(private ts: TrackService) { }
 
   ngOnInit() {
-    this.ts
-      .getTracks()
-      .subscribe((data: Track[]) => {
-        this.tracks = data;
-    });
+    this.ts.getTracks().subscribe(data => (this.results = data.results.trackmatches.track));
+    console.log(this.results);
   }
-  deleteTrack(id) {
-    this.ts.deleteTrack(id).subscribe(res => {
-      console.log('Deleted');
-    });
+  saveTrack(track_name, track_artist, track_url) {
+    this.ts.saveTrack(track_name, track_artist, track_url);
   }
 }

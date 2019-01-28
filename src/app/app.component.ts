@@ -6,6 +6,8 @@ import { NavigationCancel,
         NavigationError,
         NavigationStart,
         Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { TrackService } from './track.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,9 @@ import { NavigationCancel,
 })
 export class AppComponent {
   title = 'trackcrud';
-  constructor(private _loadingBar: SlimLoadingBarService, private _router: Router) {
+  input: string;
+  results = [];
+  constructor(private _loadingBar: SlimLoadingBarService, private _router: Router, private ts: TrackService) {
     this._router.events.subscribe((event: Event) => {
       this.navigationInterceptor(event);
     });
@@ -32,5 +36,12 @@ export class AppComponent {
     if (event instanceof NavigationError) {
       this._loadingBar.stop();
     }
+  }
+  getInput(input) {
+    this.input = input;
+    console.log(input);
+  }
+  searchTracks(input) {
+    this.ts.searchTracks(input).subscribe(data => (this.results = data.results.trackmatches.track));
   }
 }

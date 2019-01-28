@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { GetTracksComponent } from './get-tracks/get-tracks.component';
-import { SaveTrackComponent } from './save-track/save-track.component';
-import { EditTrackComponent } from './edit-track/edit-track.component';
+import { GetWishesComponent } from './get-wishes/get-wishes.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
-    path: 'track/saveTrack',
-    component: SaveTrackComponent
+    path: 'track/getWishes',
+    component: GetWishesComponent
   },
   {
-    path: 'track/editTrack/:id',
-    component: EditTrackComponent
-  },
-  {
-    path: 'track',
+    path: '',
     component: GetTracksComponent
-  }
+  },
+  {
+    path: 'track/search',
+    component: SearchComponent
+  },
 ];
 
 @NgModule({

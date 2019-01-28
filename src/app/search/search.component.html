@@ -1,3 +1,9 @@
+<form class="form-inline my-2 my-lg-0">
+    <h4> "Enter the track you want to search : "</h4>
+    <input #input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" (keyup.enter) = "getInput(input.value)">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click) = "searchTracks(input.value)">Search</button>
+</form>
+
 <table class="table table-hover">
     <thead>
     <tr>
